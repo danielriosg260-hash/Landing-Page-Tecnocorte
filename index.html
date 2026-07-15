@@ -143,7 +143,7 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin: 0 8px;
+            margin: 0 10px;
             transition: 0.3s;
         }
         .nav-link:hover {
@@ -317,21 +317,6 @@
             text-align: center;
         }
 
-        /* Arquitectura ADSO Interactiva */
-        .arch-node {
-            background-color: var(--dark-card);
-            border: 1px solid rgba(199, 158, 69, 0.2);
-            padding: 15px 25px;
-            border-radius: 30px;
-            display: inline-block;
-            transition: all 0.3s;
-        }
-        .arch-node:hover {
-            border-color: var(--gold-solid);
-            box-shadow: 0 0 15px rgba(199, 158, 69, 0.3);
-            transform: scale(1.05);
-        }
-
         /* Tabla de Comparación */
         .table-premium {
             width: 100%;
@@ -358,28 +343,6 @@
         .table-premium tr:hover td {
             background-color: #1b1b1b;
             border-color: rgba(199, 158, 69, 0.2);
-        }
-
-        /* Roadmap */
-        .roadmap-item {
-            position: relative;
-            padding-left: 30px;
-            border-left: 2px solid rgba(199,158,69,0.3);
-            margin-bottom: 30px;
-        }
-        .roadmap-item::before {
-            content: '';
-            position: absolute;
-            left: -8px;
-            top: 5px;
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background-color: var(--dark-bg);
-            border: 3px solid var(--gold-solid);
-        }
-        .roadmap-item.completed::before {
-            background-color: var(--gold-solid);
         }
 
         /* Widget de Simulador */
@@ -449,14 +412,11 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link hover-target" href="#inicio">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link hover-target" href="#sobre-nosotros">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link hover-target" href="#sobre-nosotros">Sobre Nosotros</a></li>
                     <li class="nav-item"><a class="nav-link hover-target" href="#servicios">Servicios</a></li>
                     <li class="nav-item"><a class="nav-link hover-target" href="#dashboard">Dashboard</a></li>
                     <li class="nav-item"><a class="nav-link hover-target" href="#app-mockup">La App</a></li>
-                    <li class="nav-item"><a class="nav-link hover-target" href="#arquitectura">Arquitectura</a></li>
-                    <li class="nav-item"><a class="nav-link hover-target" href="#tecnologias">Tecnologías</a></li>
                     <li class="nav-item"><a class="nav-link hover-target" href="#simulador">Simular</a></li>
-                    <li class="nav-item"><a class="nav-link hover-target" href="#roadmap">Roadmap</a></li>
                 </ul>
             </div>
         </div>
@@ -483,21 +443,36 @@
         </div>
     </section>
 
-    <!-- SOBRE NOSOTROS (Idea #13) -->
+    <!-- SOBRE NOSOTROS Y TECNOLOGÍAS FUSIONADOS -->
     <section id="sobre-nosotros" class="py-5 my-5">
         <div class="container py-5">
             <div class="text-center mb-5" data-aos="fade-up">
-                <span class="badge bg-secondary mb-2">Nuestro Equipo</span>
+                <span class="badge bg-secondary mb-2">Conoce Más</span>
                 <h2 class="display-5 fw-bold">Sobre <span class="gold-gradient-text">Nosotros</span></h2>
-                <p class="text-secondary mx-auto" style="max-width:600px;">Detrás de TecnoCorte hay un equipo comprometido con la innovación y el desarrollo de software de alta calidad para el sector de la barbería.</p>
             </div>
-            <div class="row g-4 justify-content-center">
+            
+            <!-- Texto Corporativo Ampliado -->
+            <div class="row justify-content-center mb-5" data-aos="fade-up">
+                <div class="col-lg-10">
+                    <div class="p-4 rounded text-center" style="background-color: rgba(255, 255, 255, 0.02); border: 1px solid rgba(199, 158, 69, 0.1);">
+                        <p class="text-secondary leading-relaxed mb-0 fs-5" style="line-height: 1.8;">
+                            En <strong>TecnoCorte</strong> nos dedicamos a modernizar la gestión de barberías mediante una plataforma web que facilita la reserva de citas y la administración del negocio. Nuestro sistema permite a los clientes agendar servicios de forma rápida y sencilla, mientras que los administradores pueden gestionar usuarios, barberos, servicios y horarios desde un solo lugar.
+                        </p>
+                        <p class="text-secondary leading-relaxed mt-3 fs-5" style="line-height: 1.8;">
+                            Desarrollada con tecnologías como <strong>Django, Python, HTML, CSS, JavaScript y Bootstrap</strong>, TecnoCorte ofrece una experiencia segura, intuitiva y eficiente. Nuestro compromiso es brindar una solución tecnológica que optimice el tiempo, mejore la organización y contribuya al crecimiento de las barberías, ofreciendo un servicio moderno y de calidad para todos sus usuarios.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Equipo de Desarrollo -->
+            <div class="row g-4 justify-content-center mb-5">
                 <div class="col-md-5" data-aos="fade-right">
                     <div class="team-card">
                         <div class="team-avatar-placeholder">D</div>
                         <h4 class="fw-bold text-white mb-1">Daniel</h4>
                         <p class="text-warning small mb-3">Product Owner & Lead Developer</p>
-                        <p class="text-secondary small mb-0">Encargado de la lógica de negocio, arquitectura del servidor en Node.js y la estructuración del flujo relacional de la base de datos.</p>
+                        <p class="text-secondary small mb-0">Encargado de estructurar la lógica del servidor bajo Django, la persistencia de datos relacionales con Python y la consistencia de las reglas del negocio.</p>
                     </div>
                 </div>
                 <div class="col-md-5" data-aos="fade-left">
@@ -505,14 +480,83 @@
                         <div class="team-avatar-placeholder">M</div>
                         <h4 class="fw-bold text-white mb-1">Marlon</h4>
                         <p class="text-warning small mb-3">Scrum Master & UI Designer</p>
-                        <p class="text-secondary small mb-0">Gestor del flujo ágil del proyecto, diseño de la experiencia de usuario (UX) e implementación de la interfaz visual moderna.</p>
+                        <p class="text-secondary small mb-0">Gestor de metodologías ágiles, maquetador de interfaces dinámicas y responsable de la consistencia visual utilizando Bootstrap y CSS.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- El Stack Tecnológico (Tarjetas 3D actualizadas a Django/Python) -->
+            <div class="text-center mt-5 mb-4" data-aos="fade-up">
+                <h3 class="fw-bold text-white">El Stack <span class="gold-gradient-text">Tecnológico</span></h3>
+                <p class="text-secondary small">Pasa el cursor por encima para ver cómo interviene cada herramienta en el sistema.</p>
+            </div>
+            
+            <div class="row g-4 justify-content-center">
+                <!-- Python -->
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="tech-card-wrapper">
+                        <div class="tech-card">
+                            <div class="tech-front hover-target">
+                                <i class="bi bi-filetype-py text-warning display-4 mb-2"></i>
+                                <h5 class="fw-bold text-white">Python</h5>
+                            </div>
+                            <div class="tech-back">
+                                <h6 class="fw-bold text-warning mb-2">Lenguaje Core</h6>
+                                <p class="small text-white-50">Base del procesamiento, manipulación de algoritmos de agenda y seguridad del sistema.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Django -->
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="tech-card-wrapper">
+                        <div class="tech-card">
+                            <div class="tech-front hover-target">
+                                <i class="bi bi-cpu text-warning display-4 mb-2"></i>
+                                <h5 class="fw-bold text-white">Django</h5>
+                            </div>
+                            <div class="tech-back">
+                                <h6 class="fw-bold text-warning mb-2">Framework Web</h6>
+                                <p class="small text-white-50">Estructura MVT robusta, panel de administración nativo y manejo seguro de autenticación.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- JavaScript -->
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="tech-card-wrapper">
+                        <div class="tech-card">
+                            <div class="tech-front hover-target">
+                                <i class="bi bi-filetype-js text-warning display-4 mb-2"></i>
+                                <h5 class="fw-bold text-white">JavaScript</h5>
+                            </div>
+                            <div class="tech-back">
+                                <h6 class="fw-bold text-warning mb-2">Interactividad</h6>
+                                <p class="small text-white-50">Permite validaciones en el navegador, animaciones fluidas y actualización de datos asíncronos.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Bootstrap -->
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="tech-card-wrapper">
+                        <div class="tech-card">
+                            <div class="tech-front hover-target">
+                                <i class="bi bi-bootstrap text-warning display-4 mb-2"></i>
+                                <h5 class="fw-bold text-white">Bootstrap 5</h5>
+                            </div>
+                            <div class="tech-back">
+                                <h6 class="fw-bold text-warning mb-2">Interfaz Fluida</h6>
+                                <p class="small text-white-50">Asegura un diseño responsivo que luce perfecto en dispositivos móviles, tablets y PCs.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SERVICIOS PREMIUM (Idea #12) -->
+    <!-- SERVICIOS PREMIUM -->
     <section id="servicios" class="py-5" style="background-color: var(--dark-deep);">
         <div class="container py-5">
             <div class="text-center mb-5" data-aos="fade-up">
@@ -752,120 +796,6 @@
         </div>
     </section>
 
-    <!-- ARQUITECTURA DE SOFTWARE (ADSO Impressive Section) -->
-    <section id="arquitectura" class="py-5">
-        <div class="container py-5 text-center">
-            <div class="mb-5" data-aos="fade-up">
-                <span class="badge bg-secondary mb-2">ADSO MVC</span>
-                <h2 class="display-5 fw-bold">Arquitectura de <span class="gold-gradient-text">Datos</span></h2>
-                <p class="text-secondary">Conexión limpia desde el cliente hasta la base de datos de forma segura.</p>
-            </div>
-            
-            <div class="row justify-content-center align-items-center g-4 py-4" data-aos="zoom-in">
-                <div class="col-md-2 col-12">
-                    <div class="arch-node">
-                        <i class="bi bi-display text-warning fs-3 mb-1 d-block"></i>
-                        <span class="small fw-bold text-white">Client EJS</span>
-                    </div>
-                </div>
-                <div class="col-md-1 col-12"><i class="bi bi-arrow-right-short text-warning fs-1"></i></div>
-                <div class="col-md-2 col-12">
-                    <div class="arch-node">
-                        <i class="bi bi-hdd-network text-warning fs-3 mb-1 d-block"></i>
-                        <span class="small fw-bold text-white">Express Server</span>
-                    </div>
-                </div>
-                <div class="col-md-1 col-12"><i class="bi bi-arrow-right-short text-warning fs-1"></i></div>
-                <div class="col-md-2 col-12">
-                    <div class="arch-node">
-                        <i class="bi bi-shuffle text-warning fs-3 mb-1 d-block"></i>
-                        <span class="small fw-bold text-white">Controllers Lógica</span>
-                    </div>
-                </div>
-                <div class="col-md-1 col-12"><i class="bi bi-arrow-right-short text-warning fs-1"></i></div>
-                <div class="col-md-2 col-12">
-                    <div class="arch-node">
-                        <i class="bi bi-database text-warning fs-3 mb-1 d-block"></i>
-                        <span class="small fw-bold text-white">MySQL Database</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- TECNOLOGÍAS CARD 3D (Idea #6) -->
-    <section id="tecnologias" class="py-5 my-5" style="background-color: var(--dark-deep);">
-        <div class="container py-5">
-            <div class="text-center mb-5" data-aos="fade-up">
-                <h2 class="display-5 fw-bold">El Stack <span class="gold-gradient-text">Tecnológico</span></h2>
-                <p class="text-secondary">Pasa el cursor por encima para ver el rol de cada tecnología en TecnoCorte.</p>
-            </div>
-            
-            <div class="row g-4 justify-content-center">
-                <!-- Node.js -->
-                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="tech-card-wrapper">
-                        <div class="tech-card">
-                            <div class="tech-front hover-target">
-                                <i class="bi bi-filetype-js text-warning display-4 mb-2"></i>
-                                <h5 class="fw-bold text-white">Node.js</h5>
-                            </div>
-                            <div class="tech-back">
-                                <h6 class="fw-bold text-warning mb-2">Entorno Backend</h6>
-                                <p class="small text-white-50">Gestiona múltiples conexiones y peticiones en tiempo real con alto rendimiento.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Express.js -->
-                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="tech-card-wrapper">
-                        <div class="tech-card">
-                            <div class="tech-front hover-target">
-                                <i class="bi bi-code-square text-warning display-4 mb-2"></i>
-                                <h5 class="fw-bold text-white">Express.js</h5>
-                            </div>
-                            <div class="tech-back">
-                                <h6 class="fw-bold text-warning mb-2">Framework Web</h6>
-                                <p class="small text-white-50">Administra las rutas dinámicas y APIs que conectan el frontend con la base de datos.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- MySQL -->
-                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="tech-card-wrapper">
-                        <div class="tech-card">
-                            <div class="tech-front hover-target">
-                                <i class="bi bi-database-check text-warning display-4 mb-2"></i>
-                                <h5 class="fw-bold text-white">MySQL</h5>
-                            </div>
-                            <div class="tech-back">
-                                <h6 class="fw-bold text-warning mb-2">Base de Datos</h6>
-                                <p class="small text-white-50">Almacena citas, perfiles de clientes, horarios de barberos y configuraciones del sistema.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Bootstrap -->
-                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                    <div class="tech-card-wrapper">
-                        <div class="tech-card">
-                            <div class="tech-front hover-target">
-                                <i class="bi bi-bootstrap text-warning display-4 mb-2"></i>
-                                <h5 class="fw-bold text-white">Bootstrap 5</h5>
-                            </div>
-                            <div class="tech-back">
-                                <h6 class="fw-bold text-warning mb-2">Interfaz Fluida</h6>
-                                <p class="small text-white-50">Asegura la adaptabilidad responsiva en pantallas celulares, tablets y computadoras.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- WIDGET SIMULADOR INTERACTIVO -->
     <section id="simulador" class="py-5">
         <div class="container py-5">
@@ -925,33 +855,6 @@
                             </div>
                             <button class="btn btn-outline-gold btn-sm mt-3 hover-target" onclick="resetSimulator()">Hacer otra simulación</button>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ROADMAP DE PROYECTO -->
-    <section id="roadmap" class="py-5" style="background-color: var(--dark-deep);">
-        <div class="container py-5">
-            <div class="text-center mb-5" data-aos="fade-up">
-                <h2 class="display-5 fw-bold">Roadmap del <span class="gold-gradient-text">Proyecto</span></h2>
-                <p class="text-secondary">Nuestras metas estratégicas de desarrollo continuo en SENA.</p>
-            </div>
-            
-            <div class="row justify-content-center">
-                <div class="col-lg-8" data-aos="fade-up">
-                    <div class="roadmap-item completed">
-                        <h5 class="fw-bold text-white mb-1">Fase 1: Diseño UI/UX y Landing Page <span class="badge bg-warning text-dark ms-2">Completado</span></h5>
-                        <p class="text-secondary small">Maquetación visual, wireframes y propuesta gráfica en tonos negro y dorado premium.</p>
-                    </div>
-                    <div class="roadmap-item">
-                        <h5 class="fw-bold text-white mb-1">Fase 2: Backend & Base de Datos <span class="badge bg-secondary ms-2">En Desarrollo</span></h5>
-                        <p class="text-secondary small">Integración de Node.js, Express, enrutamientos funcionales de controladores y migración a MySQL.</p>
-                    </div>
-                    <div class="roadmap-item">
-                        <h5 class="fw-bold text-white mb-1">Fase 3: Inteligencia Artificial & Reportes Avanzados <span class="badge bg-dark ms-2">Futuro</span></h5>
-                        <p class="text-secondary small">Sugerencias predictivas de horarios de corte basados en el patrón de comportamiento de cada cliente.</p>
                     </div>
                 </div>
             </div>
