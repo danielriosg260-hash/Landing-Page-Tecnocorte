@@ -25,13 +25,53 @@
             --dark-deep: #050505;
             --dark-bg: #0c0c0c;
             --dark-card: #151515;
-            /* Paleta de Oro Metalizado (Menos amarillo, más bronce/champaña real) */
+            /* Paleta de Oro Champaña Metálico */
             --gold-solid: #c99e45;
             --gold-dark: #916c28;
             --gold-light: #f7e1b5;
             --gold-gradient: linear-gradient(135deg, #f7e1b5 0%, #c99e45 50%, #916c28 100%);
             --text-light: #f0f0f0;
             --text-muted: #a0a0a0;
+        }
+
+        /* 11. Cursor Personalizado Premium (Desactivado en celulares para no interferir) */
+        @media (min-width: 992px) {
+            #custom-cursor {
+                width: 20px;
+                height: 20px;
+                border: 2px solid var(--gold-solid);
+                border-radius: 50%;
+                position: fixed;
+                transform: translate(-50%, -50%);
+                pointer-events: none;
+                z-index: 999999;
+                transition: width 0.2s, height 0.2s, background-color 0.2s;
+                mix-blend-mode: difference;
+            }
+            #custom-cursor-dot {
+                width: 6px;
+                height: 6px;
+                background-color: var(--gold-solid);
+                border-radius: 50%;
+                position: fixed;
+                transform: translate(-50%, -50%);
+                pointer-events: none;
+                z-index: 999999;
+            }
+            .hover-target:hover ~ #custom-cursor {
+                width: 45px;
+                height: 45px;
+                background-color: rgba(199, 158, 69, 0.1);
+                border-color: var(--gold-light);
+            }
+        }
+
+        /* 10. Partículas de Fondo */
+        #canvas-particles {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            pointer-events: none;
         }
 
         /* Preloader */
@@ -79,7 +119,6 @@
             font-family: 'Cinzel', serif;
         }
 
-        /* Degradado de Texto Dorado */
         .gold-gradient-text {
             background: var(--gold-gradient);
             -webkit-background-clip: text;
@@ -87,13 +126,12 @@
             font-weight: 700;
         }
 
-        /* Navbar Premium */
+        /* Navbar */
         .navbar {
             background-color: rgba(5, 5, 5, 0.95) !important;
             border-bottom: 1px solid rgba(199, 158, 69, 0.15);
             backdrop-filter: blur(15px);
             padding: 15px 0;
-            transition: all 0.3s ease;
         }
         .navbar-brand {
             font-size: 1.6rem;
@@ -108,22 +146,20 @@
             margin: 0 10px;
             transition: 0.3s;
         }
-        .nav-link:hover, .nav-link.active {
+        .nav-link:hover {
             color: var(--gold-solid) !important;
-            text-shadow: 0 0 8px rgba(199, 158, 69, 0.4);
         }
 
-        /* Hero Modernizado */
+        /* Hero */
         .hero {
             min-height: 100vh;
             background: linear-gradient(rgba(5, 5, 5, 0.85), rgba(12, 12, 12, 1)), 
                         url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
             display: flex;
             align-items: center;
-            position: relative;
         }
 
-        /* Botones Premium */
+        /* Botones */
         .btn-gold {
             background: var(--gold-gradient);
             color: var(--dark-deep) !important;
@@ -156,10 +192,9 @@
             background: var(--gold-gradient);
             color: var(--dark-deep) !important;
             border-color: transparent;
-            box-shadow: 0 4px 15px rgba(199, 158, 69, 0.3);
         }
 
-        /* Tarjetas de Roles con Efecto de Resplandor */
+        /* Tarjetas de Roles */
         .feature-card {
             background-color: var(--dark-card);
             border: 1px solid rgba(199, 158, 69, 0.1);
@@ -167,23 +202,11 @@
             padding: 40px 30px;
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             position: relative;
-            overflow: hidden;
-        }
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(180deg, rgba(199, 158, 69, 0.1) 0%, transparent 100%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
         }
         .feature-card:hover {
             border-color: var(--gold-solid);
             transform: translateY(-8px);
             box-shadow: 0 15px 40px rgba(199, 158, 69, 0.15);
-        }
-        .feature-card:hover::before {
-            opacity: 1;
         }
         .feature-icon {
             font-size: 3.5rem;
@@ -198,25 +221,146 @@
             transform: rotateY(180deg);
         }
 
-        /* Contadores Animados */
-        .counter-section {
-            background: linear-gradient(180deg, var(--dark-bg) 0%, var(--dark-deep) 100%);
-            border-y: 1px solid rgba(199, 158, 69, 0.1);
+        /* 1. Dashboard Interactivo */
+        .dashboard-mockup {
+            background-color: #101010;
+            border: 2px solid rgba(199, 158, 69, 0.25);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.8);
         }
-        .counter-num {
-            font-size: 3.5rem;
-            font-weight: 800;
-            font-family: 'Cinzel', serif;
-            margin-bottom: 5px;
+        .dash-header {
+            background-color: #1a1a1a;
+            border-bottom: 1px solid rgba(199, 158, 69, 0.15);
+        }
+        .dash-card {
+            background-color: #161616;
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .progress-bar-custom {
+            height: 8px;
+            background-color: #222;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--gold-gradient);
+            width: 0%;
+            transition: width 2s cubic-bezier(0.1, 1, 0.1, 1);
         }
 
-        /* Widget de Simulador de Citas */
+        /* 6. Tecnologías Girable 3D */
+        .tech-card-wrapper {
+            perspective: 1000px;
+            height: 160px;
+        }
+        .tech-card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+        .tech-card-wrapper:hover .tech-card {
+            transform: rotateY(180deg);
+        }
+        .tech-front, .tech-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid rgba(199, 158, 69, 0.15);
+        }
+        .tech-front {
+            background-color: var(--dark-card);
+        }
+        .tech-back {
+            background-color: #1c150b;
+            transform: rotateY(180deg);
+            padding: 15px;
+            text-align: center;
+        }
+
+        /* 5. Arquitectura ADSO Interactiva */
+        .arch-node {
+            background-color: var(--dark-card);
+            border: 1px solid rgba(199, 158, 69, 0.2);
+            padding: 15px 25px;
+            border-radius: 30px;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+        .arch-node:hover {
+            border-color: var(--gold-solid);
+            box-shadow: 0 0 15px rgba(199, 158, 69, 0.3);
+            transform: scale(1.05);
+        }
+
+        /* 7. Tabla de Comparación */
+        .table-premium {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 10px;
+        }
+        .table-premium th {
+            background-color: #121212;
+            color: var(--gold-solid);
+            font-family: 'Cinzel', serif;
+            padding: 15px;
+            text-align: center;
+            border-bottom: 2px solid rgba(199, 158, 69, 0.2);
+        }
+        .table-premium td {
+            background-color: var(--dark-card);
+            padding: 20px;
+            text-align: center;
+            vertical-align: middle;
+            border-top: 1px solid rgba(255,255,255,0.02);
+            border-bottom: 1px solid rgba(255,255,255,0.02);
+            transition: 0.3s;
+        }
+        .table-premium tr:hover td {
+            background-color: #1b1b1b;
+            border-color: rgba(199, 158, 69, 0.2);
+        }
+
+        /* 14. Roadmap */
+        .roadmap-item {
+            position: relative;
+            padding-left: 30px;
+            border-left: 2px solid rgba(199,158,69,0.3);
+            margin-bottom: 30px;
+        }
+        .roadmap-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 5px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: var(--dark-bg);
+            border: 3px solid var(--gold-solid);
+        }
+        .roadmap-item.completed::before {
+            background-color: var(--gold-solid);
+        }
+
+        /* Widget de Simulador */
         .simulator-box {
             background-color: var(--dark-card);
             border: 2px solid rgba(199, 158, 69, 0.2);
             border-radius: 16px;
             padding: 35px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
         .simulator-step {
             padding: 12px;
@@ -231,65 +375,16 @@
             border-color: var(--gold-solid);
             background-color: rgba(199, 158, 69, 0.05);
         }
-
-        /* Servicios e Imágenes */
-        .gallery-img {
-            border-radius: 12px;
-            overflow: hidden;
-            position: relative;
-            border: 1px solid rgba(199, 158, 69, 0.15);
-            height: 380px;
-        }
-        .gallery-img img {
-            transition: transform 0.8s ease;
-            width: 100%; height: 100%; object-fit: cover;
-        }
-        .gallery-img:hover img {
-            transform: scale(1.1) rotate(1deg);
-        }
-        .gallery-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to top, rgba(5, 5, 5, 0.9) 0%, rgba(5, 5, 5, 0.3) 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 30px;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-        .gallery-img:hover .gallery-overlay {
-            opacity: 1;
-        }
-
-        /* Acordeón de FAQs Personalizado */
-        .accordion-item {
-            background-color: var(--dark-card) !important;
-            border: 1px solid rgba(199, 158, 69, 0.1) !important;
-            margin-bottom: 15px;
-            border-radius: 8px !important;
-            overflow: hidden;
-        }
-        .accordion-button {
-            background-color: var(--dark-card) !important;
-            color: var(--text-light) !important;
-            font-weight: 600;
-        }
-        .accordion-button:not(.collapsed) {
-            color: var(--gold-solid) !important;
-            box-shadow: none;
-        }
-        .accordion-button::after {
-            filter: invert(1) sepia(1) saturate(5) hue-rotate(340deg); /* Icono flecha en dorado */
-        }
-        .accordion-body {
-            color: var(--text-muted);
-            background-color: rgba(5,5,5,0.4);
-        }
-
     </style>
 </head>
 <body>
+
+    <!-- 11. Elementos visuales de Cursor (Solo Escritorio) -->
+    <div id="custom-cursor"></div>
+    <div id="custom-cursor-dot"></div>
+
+    <!-- 10. Canvas para Partículas de Fondo -->
+    <canvas id="canvas-particles"></canvas>
 
     <!-- PRELOADER -->
     <div id="preloader">
@@ -301,19 +396,21 @@
     <div class="progress-bar-scroll" id="scrollBar"></div>
 
     <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top animate__animated animate__fadeInDown">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#"><span class="gold-gradient-text">TECNO</span>CORTE</a>
+            <a class="navbar-brand fw-bold hover-target" href="#"><span class="gold-gradient-text">TECNO</span>CORTE</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#roles">Roles</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#simulador">Simulador</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#faqs">Preguntas</a></li>
+                    <li class="nav-item"><a class="nav-link hover-target" href="#inicio">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link hover-target" href="#dashboard">SaaS</a></li>
+                    <li class="nav-item"><a class="nav-link hover-target" href="#arquitectura">Arquitectura</a></li>
+                    <li class="nav-item"><a class="nav-link hover-target" href="#tecnologias">Tecnologías</a></li>
+                    <li class="nav-item"><a class="nav-link hover-target" href="#simulador">Simulador</a></li>
+                    <li class="nav-item"><a class="nav-link hover-target" href="#comparativa">Comparativa</a></li>
+                    <li class="nav-item"><a class="nav-link hover-target" href="#roadmap">Roadmap</a></li>
                 </ul>
             </div>
         </div>
@@ -324,80 +421,228 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
-                    <span class="badge px-3 py-2 mb-3 animate__animated animate__fadeInLeft" style="background-color: rgba(199, 158, 69, 0.15); border: 1px solid var(--gold-solid); color: var(--gold-light);">PROYECTO SENA - HAIRZONE</span>
+                    <span class="badge px-3 py-2 mb-3 animate__animated animate__fadeInLeft" style="background-color: rgba(199, 158, 69, 0.15); border: 1px solid var(--gold-solid); color: var(--gold-light);">SOFTWARE AS A SERVICE</span>
                     <h1 class="display-3 fw-bold mb-3 animate__animated animate__fadeInLeft">
-                        Estilo exclusivo, gestión <span class="gold-gradient-text">inteligente</span>.
+                        La evolución digital de <span class="gold-gradient-text">HairZone</span>.
                     </h1>
                     <p class="lead mb-4 animate__animated animate__fadeInLeft animate__delay-1s text-secondary">
-                        Digitalizamos la experiencia de barbería tradicional en HairZone. Agenda tu cita en segundos y experimenta el verdadero control del tiempo.
+                        Mucho más que una agenda. Desarrollamos un software robusto con dashboard analítico, control de roles e integraciones inteligentes.
                     </p>
                     <div class="d-flex gap-3 animate__animated animate__fadeInUp animate__delay-2s">
-                        <a href="#simulador" class="btn btn-gold">Probar Simulador</a>
-                        <a href="#roles" class="btn btn-outline-gold">Roles de Plataforma</a>
+                        <a href="#dashboard" class="btn btn-gold hover-target">Ver Dashboard</a>
+                        <a href="#simulador" class="btn btn-outline-gold hover-target">Probar Simulador</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- METRICAS / CONTADORES (Efecto WOW inmediato) -->
-    <section class="py-5 counter-section text-center">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="counter-num gold-gradient-text" data-val="100">0</div>
-                    <p class="text-secondary small fw-bold uppercase">Satisfacción garantizada %</p>
-                </div>
-                <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="counter-num gold-gradient-text" data-val="15">0</div>
-                    <p class="text-secondary small fw-bold">Minutos de espera promedio</p>
-                </div>
-                <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="counter-num gold-gradient-text" data-val="2500">0</div>
-                    <p class="text-secondary small fw-bold">Citas automatizadas al mes</p>
-                </div>
-                <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="400">
-                    <div class="counter-num gold-gradient-text" data-val="10">0</div>
-                    <p class="text-secondary small fw-bold">Barberos en simultáneo</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECCIÓN DE ROLES -->
-    <section id="roles" class="py-5 my-5">
+    <!-- 1. DASHBOARD INTERACTIVO MOCKUP (SaaS Feeling) -->
+    <section id="dashboard" class="py-5 my-5">
         <div class="container py-5">
             <div class="text-center mb-5" data-aos="fade-up">
-                <h2 class="display-5 fw-bold">Ecosistema <span class="gold-gradient-text">TecnoCorte</span></h2>
-                <p class="text-secondary">Tres roles adaptados en un flujo tecnológico perfecto.</p>
+                <h2 class="display-5 fw-bold">Gestión Centralizada, <span class="gold-gradient-text">Control Absoluto</span></h2>
+                <p class="text-secondary mx-auto" style="max-width:600px;">Visualiza en tiempo real el comportamiento financiero y operativo de la barbería.</p>
             </div>
-            <div class="row g-4">
-                <div class="col-md-4" data-aos="fade-right">
-                    <div class="feature-card h-100 text-center">
-                        <i class="bi bi-shield-lock feature-icon"></i>
-                        <h3 class="fw-bold mb-3 h5 text-white">Administrador</h3>
-                        <p class="text-secondary">Dashboard analítico de ganancias, horarios del equipo, creación de promociones y reportes avanzados de HairZone.</p>
+            
+            <div class="row align-items-center g-5">
+                <div class="col-lg-5" data-aos="fade-right">
+                    <h3 class="fw-bold mb-3 text-white">Métricas de Negocio</h3>
+                    <p class="text-secondary mb-4">
+                        Con el panel de administración de TecnoCorte, HairZone puede automatizar las tareas repetitivas y monitorear la efectividad del equipo de barberos al instante.
+                    </p>
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span class="small text-secondary fw-bold">Optimización del Tiempo</span>
+                            <span class="small text-warning fw-bold">95%</span>
+                        </div>
+                        <div class="progress-bar-custom">
+                            <div class="progress-fill" id="fill-prog-1" style="width: 95%;"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="d-flex justify-content-between mb-1">
+                            <span class="small text-secondary fw-bold">Retención de Clientes</span>
+                            <span class="small text-warning fw-bold">88%</span>
+                        </div>
+                        <div class="progress-bar-custom">
+                            <div class="progress-fill" id="fill-prog-2" style="width: 88%;"></div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="feature-card h-100 text-center">
-                        <i class="bi bi-scissors feature-icon"></i>
-                        <h3 class="fw-bold mb-3 h5 text-white">Barbero</h3>
-                        <p class="text-secondary">Visualización de agenda en tiempo real. Acepta y rechaza reservas, gestionando su propia disponibilidad horaria al instante.</p>
-                    </div>
-                </div>
-                <div class="col-md-4" data-aos="fade-left" data-aos-delay="200">
-                    <div class="feature-card h-100 text-center">
-                        <i class="bi bi-phone-vibrate feature-icon"></i>
-                        <h3 class="fw-bold mb-3 h5 text-white">Cliente</h3>
-                        <p class="text-secondary">Reserva un servicio premium, selecciona su barbero de confianza y recibe notificaciones SMS/Correo automáticamente.</p>
+                
+                <!-- Mockup de Pantalla Interactiva -->
+                <div class="col-lg-7" data-aos="fade-left">
+                    <div class="dashboard-mockup">
+                        <div class="dash-header p-3 d-flex align-items-center justify-content-between">
+                            <div class="d-flex gap-2">
+                                <span style="width:12px; height:12px; background-color:#ff5f56; border-radius:50%; display:inline-block;"></span>
+                                <span style="width:12px; height:12px; background-color:#ffbd2e; border-radius:50%; display:inline-block;"></span>
+                                <span style="width:12px; height:12px; background-color:#27c93f; border-radius:50%; display:inline-block;"></span>
+                            </div>
+                            <span class="small text-secondary fw-bold">admin.tecnocorte.co/dashboard</span>
+                            <span style="width:12px;"></span>
+                        </div>
+                        <div class="p-4">
+                            <!-- Fila de Estadísticas Rápidas -->
+                            <div class="row g-3 mb-4">
+                                <div class="col-4">
+                                    <div class="dash-card text-center">
+                                        <p class="small text-secondary mb-1">Citas Hoy</p>
+                                        <h4 class="fw-bold gold-gradient-text mb-0">18</h4>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="dash-card text-center">
+                                        <p class="small text-secondary mb-1">Clientes</p>
+                                        <h4 class="fw-bold gold-gradient-text mb-0">235</h4>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="dash-card text-center">
+                                        <p class="small text-secondary mb-1">Ingresos</p>
+                                        <h4 class="fw-bold gold-gradient-text mb-0">$1.8M</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Panel de Historial Simulado -->
+                            <div class="dash-card">
+                                <h6 class="small fw-bold text-white mb-3"><i class="bi bi-clock-history text-warning me-2"></i> Próximas Reservas de Citas</h6>
+                                <div class="d-flex justify-content-between align-items-center py-2 border-bottom border-secondary-subtle">
+                                    <div class="small">Juan Carlos Restrepo</div>
+                                    <div class="small text-warning">Corte Premium • 2:30 PM</div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center py-2 border-bottom border-secondary-subtle">
+                                    <div class="small">Andrés Felipe</div>
+                                    <div class="small text-warning">Perfilado Barba • 3:15 PM</div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center py-2">
+                                    <div class="small">Mateo Gómez</div>
+                                    <div class="small text-warning">Corte & Estilo • 4:00 PM</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- WIDGET SIMULADOR INTERACTIVO (Diferenciador enorme para tu presentación) -->
+    <!-- 5. ARQUITECTURA DE SOFTWARE (ADSO Impressive Section) -->
+    <section id="arquitectura" class="py-5" style="background-color: var(--dark-deep);">
+        <div class="container py-5 text-center">
+            <div class="mb-5" data-aos="fade-up">
+                <span class="badge bg-secondary mb-2">ADSO MVC</span>
+                <h2 class="display-5 fw-bold">Arquitectura de <span class="gold-gradient-text">Datos</span></h2>
+                <p class="text-secondary">Conexión limpia desde el cliente hasta la base de datos de forma segura.</p>
+            </div>
+            
+            <div class="row justify-content-center align-items-center g-4 py-4" data-aos="zoom-in">
+                <div class="col-md-2 col-12">
+                    <div class="arch-node">
+                        <i class="bi bi-display text-warning fs-3 mb-1 d-block"></i>
+                        <span class="small fw-bold text-white">Client EJS</span>
+                    </div>
+                </div>
+                <div class="col-md-1 col-12"><i class="bi bi-arrow-right-short text-warning fs-1"></i></div>
+                <div class="col-md-2 col-12">
+                    <div class="arch-node">
+                        <i class="bi bi-hdd-network text-warning fs-3 mb-1 d-block"></i>
+                        <span class="small fw-bold text-white">Express Server</span>
+                    </div>
+                </div>
+                <div class="col-md-1 col-12"><i class="bi bi-arrow-right-short text-warning fs-1"></i></div>
+                <div class="col-md-2 col-12">
+                    <div class="arch-node">
+                        <i class="bi bi-shuffle text-warning fs-3 mb-1 d-block"></i>
+                        <span class="small fw-bold text-white">Controllers Lógica</span>
+                    </div>
+                </div>
+                <div class="col-md-1 col-12"><i class="bi bi-arrow-right-short text-warning fs-1"></i></div>
+                <div class="col-md-2 col-12">
+                    <div class="arch-node">
+                        <i class="bi bi-database text-warning fs-3 mb-1 d-block"></i>
+                        <span class="small fw-bold text-white">MySQL Database</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. TECNOLOGÍAS CARD 3D (Idea #6) -->
+    <section id="tecnologias" class="py-5 my-5">
+        <div class="container py-5">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="display-5 fw-bold">El Stack <span class="gold-gradient-text">Tecnológico</span></h2>
+                <p class="text-secondary">Pasa el cursor por encima para ver el rol de cada tecnología en TecnoCorte.</p>
+            </div>
+            
+            <div class="row g-4 justify-content-center">
+                <!-- Node.js -->
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="tech-card-wrapper">
+                        <div class="tech-card">
+                            <div class="tech-front hover-target">
+                                <i class="bi bi-filetype-js text-warning display-4 mb-2"></i>
+                                <h5 class="fw-bold text-white">Node.js</h5>
+                            </div>
+                            <div class="tech-back">
+                                <h6 class="fw-bold text-warning mb-2">Entorno Backend</h6>
+                                <p class="small text-white-50">Gestiona múltiples conexiones y peticiones en tiempo real con alto rendimiento.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Express.js -->
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="tech-card-wrapper">
+                        <div class="tech-card">
+                            <div class="tech-front hover-target">
+                                <i class="bi bi-code-square text-warning display-4 mb-2"></i>
+                                <h5 class="fw-bold text-white">Express.js</h5>
+                            </div>
+                            <div class="tech-back">
+                                <h6 class="fw-bold text-warning mb-2">Framework Web</h6>
+                                <p class="small text-white-50">Administra las rutas dinámicas y APIs que conectan el frontend con la base de datos.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- MySQL -->
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="tech-card-wrapper">
+                        <div class="tech-card">
+                            <div class="tech-front hover-target">
+                                <i class="bi bi-database-check text-warning display-4 mb-2"></i>
+                                <h5 class="fw-bold text-white">MySQL</h5>
+                            </div>
+                            <div class="tech-back">
+                                <h6 class="fw-bold text-warning mb-2">Base de Datos</h6>
+                                <p class="small text-white-50">Almacena citas, perfiles de clientes, horarios de barberos y configuraciones del sistema.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Bootstrap -->
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="tech-card-wrapper">
+                        <div class="tech-card">
+                            <div class="tech-front hover-target">
+                                <i class="bi bi-bootstrap text-warning display-4 mb-2"></i>
+                                <h5 class="fw-bold text-white">Bootstrap 5</h5>
+                            </div>
+                            <div class="tech-back">
+                                <h6 class="fw-bold text-warning mb-2">Interfaz Fluida</h6>
+                                <p class="small text-white-50">Asegura la adaptabilidad responsiva en pantallas celulares, tablets y computadoras.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WIDGET SIMULADOR INTERACTIVO -->
     <section id="simulador" class="py-5" style="background-color: var(--dark-deep);">
         <div class="container py-5">
             <div class="row align-items-center">
@@ -441,7 +686,7 @@
                                 </div>
                             </div>
                             
-                            <button class="btn btn-gold w-100 mt-4" onclick="confirmBooking()">AGENDAR CITA</button>
+                            <button class="btn btn-gold w-100 mt-4 hover-target" onclick="confirmBooking()">AGENDAR CITA</button>
                         </div>
 
                         <!-- Éxito oculto al inicio -->
@@ -454,7 +699,7 @@
                                 <p class="mb-1 text-white-50 small">Barbero: <strong id="res-barb" class="text-white">Mateo (Senior)</strong></p>
                                 <p class="mb-0 text-white-50 small">Hora: <strong id="res-hora" class="text-white">10:00 AM</strong></p>
                             </div>
-                            <button class="btn btn-outline-gold btn-sm mt-3" onclick="resetSimulator()">Hacer otra simulación</button>
+                            <button class="btn btn-outline-gold btn-sm mt-3 hover-target" onclick="resetSimulator()">Hacer otra simulación</button>
                         </div>
                     </div>
                 </div>
@@ -462,121 +707,75 @@
         </div>
     </section>
 
-    <!-- SECCIÓN DE SERVICIOS -->
-    <section id="servicios" class="py-5">
-        <div class="container py-5">
-            <div class="text-center mb-5" data-aos="zoom-in">
-                <h2 class="display-5 fw-bold">Nuestros <span class="gold-gradient-text">Trabajos Exclusivos</span></h2>
-                <p class="text-secondary">Diseñado para hombres con actitud y elegancia.</p>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="gallery-img">
-                        <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=600&q=80" alt="Estilo">
-                        <div class="gallery-overlay">
-                            <h4 class="fw-bold text-white mb-1">Cortes Modernos</h4>
-                            <p class="text-warning small mb-0">Fade de precisión y texturizado premium</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="gallery-img">
-                        <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=600&q=80" alt="Barba">
-                        <div class="gallery-overlay">
-                            <h4 class="fw-bold text-white mb-1">Ritual de Barba</h4>
-                            <p class="text-warning small mb-0">Toalla caliente y afeitado tradicional</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="gallery-img">
-                        <img src="https://images.unsplash.com/photo-1512864084360-7c0c4d0a0845?auto=format&fit=crop&w=600&q=80" alt="Detalle">
-                        <div class="gallery-overlay">
-                            <h4 class="fw-bold text-white mb-1">Estilo HairZone</h4>
-                            <p class="text-warning small mb-0">La fusión del arte de barbería clásica y la elegancia</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECCIÓN DE TESTIMONIOS (Reviews de alta gama) -->
-    <section class="py-5" style="background-color: var(--dark-deep)">
-        <div class="container py-5">
-            <div class="text-center mb-5" data-aos="zoom-in">
-                <h2 class="display-5 fw-bold">Lo que opinan los <span class="gold-gradient-text">Clientes</span></h2>
-                <p class="text-secondary">Por qué nos eligen como su plataforma definitiva.</p>
-            </div>
-            <div class="row g-4 justify-content-center">
-                <div class="col-lg-4 col-md-6" data-aos="fade-up">
-                    <div class="p-4 rounded-4" style="background-color: var(--dark-card); border: 1px solid rgba(199,158,69,0.1)">
-                        <div class="d-flex text-warning mb-3">
-                            <i class="bi bi-star-fill me-1"></i><i class="bi bi-star-fill me-1"></i><i class="bi bi-star-fill me-1"></i><i class="bi bi-star-fill me-1"></i><i class="bi bi-star-fill"></i>
-                        </div>
-                        <p class="text-secondary italic">"¡Fantástico! Ya no tengo que chatear por WhatsApp para agendar mi cita del fin de semana. Solo selecciono mi barbero, veo su espacio libre y listo."</p>
-                        <h6 class="fw-bold mb-0 mt-3 text-white">Alejandro Restrepo</h6>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="p-4 rounded-4" style="background-color: var(--dark-card); border: 1px solid rgba(199,158,69,0.1)">
-                        <div class="d-flex text-warning mb-3">
-                            <i class="bi bi-star-fill me-1"></i><i class="bi bi-star-fill me-1"></i><i class="bi bi-star-fill me-1"></i><i class="bi bi-star-fill me-1"></i><i class="bi bi-star-fill"></i>
-                        </div>
-                        <p class="text-secondary italic">"Como barbero de HairZone, TecnoCorte me ha salvado la vida. Mi agenda está ordenada, sé exactamente quién viene y evito que las citas choquen."</p>
-                        <h6 class="fw-bold mb-0 mt-3 text-white">Mateo Barber (Senior)</h6>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PREGUNTAS FRECUENTES (FAQs) -->
-    <section id="faqs" class="py-5">
+    <!-- 7. TABLA DE COMPARATIVO (WhatsApp vs TecnoCorte) -->
+    <section id="comparativa" class="py-5">
         <div class="container py-5">
             <div class="text-center mb-5" data-aos="fade-up">
-                <h2 class="display-5 fw-bold">Preguntas <span class="gold-gradient-text">Frecuentes</span></h2>
-                <p class="text-secondary">Resolvemos tus dudas sobre el funcionamiento de la plataforma.</p>
+                <h2 class="display-5 fw-bold">¿Por qué <span class="gold-gradient-text">Digitalizar</span>?</h2>
+                <p class="text-secondary">Comparativa de control directo sobre los métodos de reserva tradicionales.</p>
             </div>
-            <div class="row justify-content-center" data-aos="fade-up">
-                <div class="col-lg-8">
-                    <div class="accordion" id="faqAccordion">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-                                    ¿Cómo evita el sistema que se dupliquen las citas?
-                                </button>
-                            </h2>
-                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    TecnoCorte cuenta con una agenda inteligente en tiempo real conectada a la base de datos de MySQL. En cuanto un cliente reserva un slot de horario, el sistema lo inhabilita instantáneamente para cualquier otro usuario.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
-                                    ¿Puedo cancelar o reagendar mi cita?
-                                </button>
-                            </h2>
-                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    ¡Sí! Desde tu perfil de Cliente tendrás una sección de "Mis Citas" donde podrás cancelar o modificar tus reservas con límites de tiempo configurados por la administración.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
-                                    ¿Qué tecnologías respaldan este desarrollo?
-                                </button>
-                            </h2>
-                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    Este proyecto de formación SENA está construido con Node.js y Express.js en el backend, motor de plantillas EJS y CSS para la experiencia visual, e interactividad mediante JS Nativo. Los datos se almacenan de forma segura en MySQL.
-                                </div>
-                            </div>
-                        </div>
+            
+            <div class="row justify-content-center" data-aos="zoom-in">
+                <div class="col-lg-10">
+                    <div class="table-responsive">
+                        <table class="table-premium">
+                            <thead>
+                                <tr>
+                                    <th>Característica</th>
+                                    <th>Chats de WhatsApp</th>
+                                    <th>TecnoCorte Platform</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-start fw-bold">Evitar Reservas Duplicadas</td>
+                                    <td class="text-danger"><i class="bi bi-x-circle-fill"></i> Ineficiente</td>
+                                    <td class="text-success"><i class="bi bi-check-circle-fill"></i> 100% Automatizado</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-start fw-bold">Historial de Visitas del Cliente</td>
+                                    <td class="text-danger"><i class="bi bi-x-circle-fill"></i> Manual / No hay</td>
+                                    <td class="text-success"><i class="bi bi-check-circle-fill"></i> Base de Datos SQL</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-start fw-bold">Control de Ingresos / Caja</td>
+                                    <td class="text-danger"><i class="bi bi-x-circle-fill"></i> No integrado</td>
+                                    <td class="text-success"><i class="bi bi-check-circle-fill"></i> Dashboard Admin</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-start fw-bold">Notificación Automática</td>
+                                    <td class="text-danger"><i class="bi bi-x-circle-fill"></i> Depende del humano</td>
+                                    <td class="text-success"><i class="bi bi-check-circle-fill"></i> Al instante</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 14. ROADMAP DE PROYECTO -->
+    <section id="roadmap" class="py-5" style="background-color: var(--dark-deep);">
+        <div class="container py-5">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="display-5 fw-bold">Roadmap del <span class="gold-gradient-text">Proyecto</span></h2>
+                <p class="text-secondary">Nuestras metas estratégicas de desarrollo continuo en SENA.</p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8" data-aos="fade-up">
+                    <div class="roadmap-item completed">
+                        <h5 class="fw-bold text-white mb-1">Fase 1: Diseño UI/UX y Landing Page <span class="badge bg-warning text-dark ms-2">Completado</span></h5>
+                        <p class="text-secondary small">Maquetación visual, wireframes y propuesta gráfica en tonos negro y dorado premium.</p>
+                    </div>
+                    <div class="roadmap-item">
+                        <h5 class="fw-bold text-white mb-1">Fase 2: Backend & Base de Datos <span class="badge bg-secondary ms-2">En Desarrollo</span></h5>
+                        <p class="text-secondary small">Integración de Node.js, Express, enrutamientos funcionales de controladores y migración a MySQL.</p>
+                    </div>
+                    <div class="roadmap-item">
+                        <h5 class="fw-bold text-white mb-1">Fase 3: Inteligencia Artificial & Reportes Avanzados <span class="badge bg-dark ms-2">Futuro</span></h5>
+                        <p class="text-secondary small">Sugerencias predictivas de horarios de corte basados en el patrón de comportamiento de cada cliente.</p>
                     </div>
                 </div>
             </div>
@@ -588,7 +787,7 @@
         <div class="container">
             <h3 class="fw-bold mb-3"><span class="gold-gradient-text">TECNO</span>CORTE</h3>
             <p class="mb-2">&copy; 2026 TecnoCorte - Todos los derechos reservados.</p>
-            <p class="small text-secondary mb-0">Tecnología elegante diseñada para la excelencia.</p>
+            <p class="small text-secondary mb-0">Tecnología robusta para la gestión inteligente.</p>
         </div>
     </footer>
 
@@ -603,9 +802,83 @@
             preloader.style.opacity = '0';
             setTimeout(() => { preloader.style.visibility = 'hidden'; }, 800);
             
-            // Iniciar contadores dinámicos cuando cargue la página
-            animateCounters();
+            // Animación para llenar barras de carga de progreso
+            setTimeout(() => {
+                document.getElementById('fill-prog-1').style.width = '95%';
+                document.getElementById('fill-prog-2').style.width = '88%';
+            }, 500);
         });
+
+        // 11. Control de Movimiento del Cursor Personalizado (Solo Desktop)
+        const cursor = document.getElementById('custom-cursor');
+        const cursorDot = document.getElementById('custom-cursor-dot');
+        
+        if (window.innerWidth >= 992) {
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                cursorDot.style.left = e.clientX + 'px';
+                cursorDot.style.top = e.clientY + 'px';
+            });
+        }
+
+        // 10. Lógica del Sistema de Partículas de Luz de Fondo
+        const canvas = document.getElementById('canvas-particles');
+        const ctx = canvas.getContext('2d');
+        let particlesArray = [];
+
+        function setCanvasSize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        setCanvasSize();
+        window.addEventListener('resize', setCanvasSize);
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = Math.random() * 0.5 - 0.25;
+                this.speedY = Math.random() * 0.5 - 0.25;
+                this.alpha = Math.random() * 0.5 + 0.2;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.alpha;
+                ctx.fillStyle = '#c99e45';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        function initParticles() {
+            particlesArray = [];
+            let numberOfParticles = (canvas.width * canvas.height) / 15000;
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+        initParticles();
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+            }
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
 
         // 2. Control de la Barra de Progreso Superior
         window.onscroll = function() {
@@ -622,26 +895,6 @@
             mirror: false
         });
 
-        // 4. Lógica de Contadores Numéricos Animados
-        function animateCounters() {
-            const counters = document.querySelectorAll('.counter-num');
-            counters.forEach(counter => {
-                const updateCount = () => {
-                    const target = +counter.getAttribute('data-val');
-                    const count = +counter.innerText;
-                    const speed = target / 50; 
-
-                    if (count < target) {
-                        counter.innerText = Math.ceil(count + speed);
-                        setTimeout(updateCount, 25);
-                    } else {
-                        counter.innerText = (target === 100 ? target + "%" : "+" + target);
-                    }
-                };
-                updateCount();
-            });
-        }
-
         // 5. Lógica Interactiva del Simulador de Reserva
         let selectedData = {
             servicio: 'Corte Premium - $35k',
@@ -650,14 +903,9 @@
         };
 
         function selectItem(element, category, value) {
-            // Deseleccionar items de la misma fila
             const rowElements = element.closest('.row').querySelectorAll('.simulator-step');
             rowElements.forEach(el => el.classList.remove('active'));
-            
-            // Seleccionar el actual
             element.classList.add('active');
-            
-            // Guardar dato
             selectedData[category] = value;
         }
 
@@ -666,7 +914,6 @@
             document.getElementById('res-barb').innerText = selectedData.barbero;
             document.getElementById('res-hora').innerText = selectedData.hora;
 
-            // Transición animada
             const containerSteps = document.getElementById('booking-steps');
             const successBox = document.getElementById('booking-success');
 
