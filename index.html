@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TecnoCorte - Tu estilo, nuestra tecnología</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <style>
+        :root {
+            --dark-deep: #050505;
+            --dark-bg: #0c0c0c;
+            --dark-card: #151515;
+            /* Paleta de Oro Metalizado (Menos amarillo, más bronce/champaña real) */
+            --gold-solid: #c99e45;
+            --gold-dark: #916c28;
+            --gold-light: #f7e1b5;
+            --gold-gradient: linear-gradient(135deg, #f7e1b5 0%, #c99e45 50%, #916c28 100%);
+            --text-light: #f0f0f0;
+            --text-muted: #a0a0a0;
+        }
+
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: var(--dark-deep);
+            z-index: 99999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        .spinner-gold {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(199, 158, 69, 0.1);
+            border-top: 3px solid var(--gold-solid);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Barra de Progreso de Scroll */
+        .progress-bar-scroll {
+            position: fixed;
+            top: 0; left: 0; height: 3px;
+            background: var(--gold-gradient);
+            width: 0%;
+            z-index: 10000;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .navbar-brand {
+            font-family: 'Cinzel', serif;
+        }
+
+        /* Degradado de Texto Dorado */
+        .gold-gradient-text {
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        /* Navbar Premium */
+        .navbar {
+            background-color: rgba(5, 5, 5, 0.95) !important;
+            border-bottom: 1px solid rgba(199, 158, 69, 0.15);
+            backdrop-filter: blur(15px);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+        .navbar-brand {
+            font-size: 1.6rem;
+            letter-spacing: 2px;
+        }
+        .nav-link {
+            color: var(--text-light) !important;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0 10px;
+            transition: 0.3s;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: var(--gold-solid) !important;
+            text-shadow: 0 0 8px rgba(199, 158, 69, 0.4);
+        }
+
+        /* Hero Modernizado */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(rgba(5, 5, 5, 0.85), rgba(12, 12, 12, 1)), 
+                        url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Botones Premium */
+        .btn-gold {
+            background: var(--gold-gradient);
+            color: var(--dark-deep) !important;
+            font-weight: 800;
+            border: none;
+            padding: 14px 35px;
+            border-radius: 4px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 15px rgba(199, 158, 69, 0.3);
+        }
+        .btn-gold:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 25px rgba(199, 158, 69, 0.6);
+        }
+
+        .btn-outline-gold {
+            background: transparent;
+            color: var(--gold-solid) !important;
+            font-weight: 800;
+            border: 2px solid var(--gold-solid);
+            padding: 12px 33px;
+            border-radius: 4px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+        }
+        .btn-outline-gold:hover {
+            background: var(--gold-gradient);
+            color: var(--dark-deep) !important;
+            border-color: transparent;
+            box-shadow: 0 4px 15px rgba(199, 158, 69, 0.3);
+        }
+
+        /* Tarjetas de Roles con Efecto de Resplandor */
+        .feature-card {
+            background-color: var(--dark-card);
+            border: 1px solid rgba(199, 158, 69, 0.1);
+            border-radius: 12px;
+            padding: 40px 30px;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(180deg, rgba(199, 158, 69, 0.1) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .feature-card:hover {
+            border-color: var(--gold-solid);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(199, 158, 69, 0.15);
+        }
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+        .feature-icon {
+            font-size: 3.5rem;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 25px;
+            display: inline-block;
+            transition: transform 0.6s ease;
+        }
+        .feature-card:hover .feature-icon {
+            transform: rotateY(180deg);
+        }
+
+        /* Contadores Animados */
+        .counter-section {
+            background: linear-gradient(180deg, var(--dark-bg) 0%, var(--dark-deep) 100%);
+            border-y: 1px solid rgba(199, 158, 69, 0.1);
+        }
+        .counter-num {
+            font-size: 3.5rem;
+            font-weight: 800;
+            font-family: 'Cinzel', serif;
+            margin-bottom: 5px;
+        }
+
+        /* Widget de Simulador de Citas */
+        .simulator-box {
+            background-color: var(--dark-card);
+            border: 2px solid rgba(199, 158, 69, 0.2);
+            border-radius: 16px;
+            padding: 35px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+        .simulator-step {
+            padding: 12px;
+            background-color: rgba(5,5,5,0.5);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 8px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .simulator-step:hover, .simulator-step.active {
+            border-color: var(--gold-solid);
+            background-color: rgba(199, 158, 69, 0.05);
+        }
+
+        /* Servicios e Imágenes */
+        .gallery-img {
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(199, 158, 69, 0.15);
+            height: 380px;
+        }
+        .gallery-img img {
+            transition: transform 0.8s ease;
+            width: 100%; height: 100%; object-fit: cover;
+        }
+        .gallery-img:hover img {
+            transform: scale(1.1) rotate(1deg);
+        }
+        .gallery-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to top, rgba(5, 5, 5, 0.9) 0%, rgba(5, 5, 5, 0.3) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .gallery-img:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        /* Acordeón de FAQs Personalizado */
+        .accordion-item {
+            background-color: var(--dark-card) !important;
+            border: 1px solid rgba(199, 158, 69, 0.1) !important;
+            margin-bottom: 15px;
+            border-radius: 8px !important;
+            overflow: hidden;
+        }
+        .accordion-button {
+            background-color: var(--dark-card) !important;
+            color: var(--text-light) !important;
+            font-weight: 600;
+        }
+        .accordion-button:not(.collapsed) {
+            color: var(--gold-solid) !important;
+            box-shadow: none;
+        }
+        .accordion-button::after {
+            filter: invert(1) sepia(1) saturate(5) hue-rotate(340deg); /* Icono flecha en dorado */
+        }
+        .accordion-body {
+            color: var(--text-muted);
+            background-color: rgba(5,5,5,0.4);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <h2 class="animate__animated animate__pulse animate__infinite mb-3" style="letter-spacing: 5px;"><span class="gold-gradient-text">TECNO</span>CORTE</h2>
+        <div class="spinner-gold"></div>
+    </div>
+
+    <!-- Barra de progreso -->
+    <div class="progress-bar-scroll" id="scrollBar"></div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top animate__animated animate__fadeInDown">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#"><span class="gold-gradient-text">TECNO</span>CORTE</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#roles">Roles</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#simulador">Simulador</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#faqs">Preguntas</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <span class="badge px-3 py-2 mb-3 animate__animated animate__fadeInLeft" style="background-color: rgba(199, 158, 69, 0.15); border: 1px solid var(--gold-solid); color: var(--gold-light);">PROYECTO SENA - HAIRZONE</span>
+                    <h1 class="display-3 fw-bold mb-3 animate__animated animate__fadeInLeft">
+                        Estilo exclusivo, gestión <span class="gold-gradient-text">inteligente</span>.
+                    </h1>
+                    <p class="lead mb-4 animate__animated animate__fadeInLeft animate__delay-1s text-secondary">
+                        Digitalizamos la experiencia de barbería tradicional en HairZone. Agenda tu cita en segundos y experimenta el verdadero control del tiempo.
+                    </p>
+                    <div class="d-flex gap-3 animate__animated animate__fadeInUp animate__delay-2s">
+                        <a href="#simulador" class="btn btn-gold">Probar Simulador</a>
+                        <a href="#roles" class="btn btn-outline-gold">Roles de Plataforma</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- METRICAS / CONTADORES (Efecto WOW inmediato) -->
+    <section class="py-5 counter-section text-center">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="counter-num gold-gradient-text" data-val="100">0</div>
+                    <p class="text-secondary small fw-bold uppercase">Satisfacción garantizada %</p>
+                </div>
+                <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="counter-num gold-gradient-text" data-val="15">0</div>
+                    <p class="text-secondary small fw-bold">Minutos de espera promedio</p>
+                </div>
+                <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="counter-num gold-gradient-text" data-val="2500">0</div>
+                    <p class="text-secondary small fw-bold">Citas automatizadas al mes</p>
+                </div>
+                <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="counter-num gold-gradient-text" data-val="10">0</div>
+                    <p class="text-secondary small fw-bold">Barberos en simultáneo</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE ROLES -->
+    <section id="roles" class="py-5 my-5">
+        <div class="container py-5">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="display-5 fw-bold">Ecosistema <span class="gold-gradient-text">TecnoCorte</span></h2>
+                <p class="text-secondary">Tres roles adaptados en un flujo tecnológico perfecto.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-right">
+                    <div class="feature-card h-100 text-center">
+                        <i class="bi bi-shield-lock feature-icon"></i>
+                        <h3 class="fw-bold mb-3 h5 text-white">Administrador</h3>
+                        <p class="text-secondary">Dashboard analítico de ganancias, horarios del equipo, creación de promociones y reportes avanzados de HairZone.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-card h-100 text-center">
+                        <i class="bi bi-scissors feature-icon"></i>
+                        <h3 class="fw-bold mb-3 h5 text-white">Barbero</h3>
+                        <p class="text-secondary">Visualización de agenda en tiempo real. Acepta y rechaza reservas, gestionando su propia disponibilidad horaria al instante.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-left" data-aos-delay="200">
+                    <div class="feature-card h-100 text-center">
+                        <i class="bi bi-phone-vibrate feature-icon"></i>
+                        <h3 class="fw-bold mb-3 h5 text-white">Cliente</h3>
+                        <p class="text-secondary">Reserva un servicio premium, selecciona su barbero de confianza y recibe notificaciones SMS/Correo automáticamente.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WIDGET SIMULADOR INTERACTIVO (Diferenciador enorme para tu presentación) -->
+    <section id="simulador" class="py-5" style="background-color: var(--dark-deep);">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-5 mb-lg-0" data-aos="fade-right">
+                    <h2 class="display-5 fw-bold mb-4">Prueba la <span class="gold-gradient-text">Simulación</span></h2>
+                    <p class="text-secondary mb-4">
+                        Hemos diseñado este simulador en tiempo real para que experimentes lo sencillo que será reservar en HairZone con nuestra plataforma TecnoCorte. 
+                    </p>
+                    <p class="text-secondary"><i class="bi bi-check2-all text-warning me-2"></i> Sin fricción de llamadas.</p>
+                    <p class="text-secondary"><i class="bi bi-check2-all text-warning me-2"></i> Algoritmo que evita colisiones.</p>
+                    <p class="text-secondary"><i class="bi bi-check2-all text-warning me-2"></i> Completamente responsive.</p>
+                </div>
+                <div class="col-lg-7" data-aos="fade-left">
+                    <div class="simulator-box text-white">
+                        <h4 class="mb-4 text-center fw-bold"><i class="bi bi-calendar-check text-warning me-2"></i> Reserva Express</h4>
+                        
+                        <div id="booking-steps">
+                            <!-- Paso 1 -->
+                            <div class="mb-3">
+                                <label class="small text-secondary fw-bold">1. SELECCIONA EL SERVICIO</label>
+                                <div class="row g-2 mt-1">
+                                    <div class="col-6"><div class="simulator-step active" onclick="selectItem(this, 'servicio', 'Corte Premium - $35k')">Corte Premium</div></div>
+                                    <div class="col-6"><div class="simulator-step" onclick="selectItem(this, 'servicio', 'Corte & Barba - $50k')">Corte & Barba</div></div>
+                                </div>
+                            </div>
+                            <!-- Paso 2 -->
+                            <div class="mb-3">
+                                <label class="small text-secondary fw-bold">2. SELECCIONA EL BARBERO</label>
+                                <div class="row g-2 mt-1">
+                                    <div class="col-6"><div class="simulator-step active" onclick="selectItem(this, 'barbero', 'Mateo (Senior)')">Mateo (Senior)</div></div>
+                                    <div class="col-6"><div class="simulator-step" onclick="selectItem(this, 'barbero', 'Santi (Master)')">Santi (Master)</div></div>
+                                </div>
+                            </div>
+                            <!-- Paso 3 -->
+                            <div class="mb-3">
+                                <label class="small text-secondary fw-bold">3. SELECCIONA EL HORARIO</label>
+                                <div class="row g-2 mt-1">
+                                    <div class="col-4"><div class="simulator-step active" onclick="selectItem(this, 'hora', '10:00 AM')">10:00 AM</div></div>
+                                    <div class="col-4"><div class="simulator-step" onclick="selectItem(this, 'hora', '2:30 PM')">2:30 PM</div></div>
+                                    <div class="col-4"><div class="simulator-step" onclick="selectItem(this, 'hora', '5:00 PM')">5:00 PM</div></div>
+                                </div>
+                            </div>
+                            
+                            <button class="btn btn-gold w-100 mt-4" onclick="confirmBooking()">AGENDAR CITA</button>
+                        </div>
+
+                        <!-- Éxito oculto al inicio -->
+                        <div id="booking-success" class="text-center py-4 d-none">
+                            <i class="bi bi-check-circle-fill text-success display-2 mb-3"></i>
+                            <h3 class="fw-bold">¡Cita Agendada!</h3>
+                            <p class="text-secondary mt-2">TecnoCorte ha guardado tu reserva en HairZone.</p>
+                            <div class="p-3 my-3 rounded" style="background-color: rgba(255,255,255,0.05); border: 1px solid rgba(199, 158, 69, 0.2)">
+                                <p class="mb-1 text-white-50 small">Servicio: <strong id="res-serv" class="text-white">Corte Premium - $35k</strong></p>
+                                <p class="mb-1 text-white-50 small">Barbero: <strong id="res-barb" class="text-white">Mateo (Senior)</strong></p>
+                                <p class="mb-0 text-white-50 small">Hora: <strong id="res-hora" class="text-white">10:00 AM</strong></p>
+                            </div>
+                            <button class="btn btn-outline-gold btn-sm mt-3" onclick="resetSimulator()">Hacer otra simulación</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE SERVICIOS -->
+    <section id="servicios" class="py-5">
+        <div class="container py-5">
+            <div class="text-center mb-5" data-aos="zoom-in">
+                <h2 class="display-5 fw-bold">Nuestros <span class="gold-gradient-text">Trabajos Exclusivos</span></h2>
+                <p class="text-secondary">Diseñado para hombres con actitud y elegancia.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="gallery-img">
+                        <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=600&q=80" alt="Estilo">
+                        <div class="gallery-overlay">
+                            <h4 class="fw-bold text-white mb-1">Cortes Modernos</h4>
+                            <p class="text-warning small mb-0">Fade de precisión y texturizado premium</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="gallery-img">
+                        <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=600&q=80" alt="Barba">
+                        <div class="gallery-overlay">
+                            <h4 class="fw-bold text-white mb-1">Ritual de Barba</h4>
+                            <p class="text-warning small mb-0">Toalla caliente y afeitado tradicional</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="gallery-img">
+                        <img src="https://images.unsplash.com/photo-1512864084360-7c0c4d0a0845?auto=format&fit=crop&w=600&q=80" alt="Detalle">
+                        <div class="gallery-overlay">
+                            <h4 class="fw-bold text-white mb-1">Estilo HairZone</h4>
+                            <p class="text-warning small mb-0">La fusión del arte de barbería clásica y la elegancia</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE TESTIMONIOS (Reviews de alta gama) -->
+    <section class="py-5" style="background-color: var(--dark-deep)">
+        <div class="container py-5">
+            <div class="text-center mb-5" data-aos="zoom-in">
+                <h2 class="display-5 fw-bold">Lo que opinan los <span class="gold-gradient-text">Clientes</span></h2>
+                <p class="text-secondary">Por qué nos eligen como su plataforma definitiva.</p>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                    <div class="p-4 rounded-4" style="background-color: var(--dark-card); border: 1px solid rgba(199,158,69,0.1)">
+                        <div class="d-flex text-warning mb-3">
+                            <i class="bi bi-star-fill me-1"></i><i class="bi bi-star-fill me-1"></i><i class="bi bi-star-fill me-1"></i><i class="bi bi-star-fill me-1"></i><i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="text-secondary italic">"¡Fantástico! Ya no tengo que chatear por WhatsApp para agendar mi cita del fin de semana. Solo selecciono mi barbero, veo su espacio libre y listo."</p>
+                        <h6 class="fw-bold mb-0 mt-3 text-white">Alejandro Restrepo</h6>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="p-4 rounded-4" style="background-color: var(--dark-card); border: 1px solid rgba(199,158,69,0.1)">
+                        <div class="d-flex text-warning mb-3">
+                            <i class="bi bi-star-fill me-1"></i><i class="bi bi-star-fill me-1"></i><i class="bi bi-star-fill me-1"></i><i class="bi bi-star-fill me-1"></i><i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="text-secondary italic">"Como barbero de HairZone, TecnoCorte me ha salvado la vida. Mi agenda está ordenada, sé exactamente quién viene y evito que las citas choquen."</p>
+                        <h6 class="fw-bold mb-0 mt-3 text-white">Mateo Barber (Senior)</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PREGUNTAS FRECUENTES (FAQs) -->
+    <section id="faqs" class="py-5">
+        <div class="container py-5">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="display-5 fw-bold">Preguntas <span class="gold-gradient-text">Frecuentes</span></h2>
+                <p class="text-secondary">Resolvemos tus dudas sobre el funcionamiento de la plataforma.</p>
+            </div>
+            <div class="row justify-content-center" data-aos="fade-up">
+                <div class="col-lg-8">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    ¿Cómo evita el sistema que se dupliquen las citas?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    TecnoCorte cuenta con una agenda inteligente en tiempo real conectada a la base de datos de MySQL. En cuanto un cliente reserva un slot de horario, el sistema lo inhabilita instantáneamente para cualquier otro usuario.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    ¿Puedo cancelar o reagendar mi cita?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    ¡Sí! Desde tu perfil de Cliente tendrás una sección de "Mis Citas" donde podrás cancelar o modificar tus reservas con límites de tiempo configurados por la administración.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    ¿Qué tecnologías respaldan este desarrollo?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Este proyecto de formación SENA está construido con Node.js y Express.js en el backend, motor de plantillas EJS y CSS para la experiencia visual, e interactividad mediante JS Nativo. Los datos se almacenan de forma segura en MySQL.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-5 text-center" style="background-color: var(--dark-deep); border-top: 1px solid rgba(199, 158, 69, 0.15)">
+        <div class="container">
+            <h3 class="fw-bold mb-3"><span class="gold-gradient-text">TECNO</span>CORTE</h3>
+            <p class="mb-2">&copy; 2026 TecnoCorte - Todos los derechos reservados.</p>
+            <p class="small text-secondary mb-0">Tecnología elegante diseñada para la excelencia.</p>
+        </div>
+    </footer>
+
+    <!-- JS Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        // 1. Quitar Preloader al cargar
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            preloader.style.opacity = '0';
+            setTimeout(() => { preloader.style.visibility = 'hidden'; }, 800);
+            
+            // Iniciar contadores dinámicos cuando cargue la página
+            animateCounters();
+        });
+
+        // 2. Control de la Barra de Progreso Superior
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("scrollBar").style.width = scrolled + "%";
+        };
+
+        // 3. Inicializar Animaciones AOS
+        AOS.init({
+            duration: 900,
+            once: true,
+            mirror: false
+        });
+
+        // 4. Lógica de Contadores Numéricos Animados
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter-num');
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-val');
+                    const count = +counter.innerText;
+                    const speed = target / 50; 
+
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + speed);
+                        setTimeout(updateCount, 25);
+                    } else {
+                        counter.innerText = (target === 100 ? target + "%" : "+" + target);
+                    }
+                };
+                updateCount();
+            });
+        }
+
+        // 5. Lógica Interactiva del Simulador de Reserva
+        let selectedData = {
+            servicio: 'Corte Premium - $35k',
+            barbero: 'Mateo (Senior)',
+            hora: '10:00 AM'
+        };
+
+        function selectItem(element, category, value) {
+            // Deseleccionar items de la misma fila
+            const rowElements = element.closest('.row').querySelectorAll('.simulator-step');
+            rowElements.forEach(el => el.classList.remove('active'));
+            
+            // Seleccionar el actual
+            element.classList.add('active');
+            
+            // Guardar dato
+            selectedData[category] = value;
+        }
+
+        function confirmBooking() {
+            document.getElementById('res-serv').innerText = selectedData.servicio;
+            document.getElementById('res-barb').innerText = selectedData.barbero;
+            document.getElementById('res-hora').innerText = selectedData.hora;
+
+            // Transición animada
+            const containerSteps = document.getElementById('booking-steps');
+            const successBox = document.getElementById('booking-success');
+
+            containerSteps.classList.add('animate__animated', 'animate__fadeOut');
+            setTimeout(() => {
+                containerSteps.classList.add('d-none');
+                successBox.classList.remove('d-none');
+                successBox.classList.add('animate__animated', 'animate__fadeInUp');
+            }, 500);
+        }
+
+        function resetSimulator() {
+            const containerSteps = document.getElementById('booking-steps');
+            const successBox = document.getElementById('booking-success');
+
+            successBox.classList.add('animate__animated', 'animate__fadeOut');
+            setTimeout(() => {
+                successBox.classList.add('d-none');
+                successBox.classList.remove('animate__animated', 'animate__fadeOut');
+                containerSteps.classList.remove('d-none', 'animate__animated', 'animate__fadeOut');
+                containerSteps.classList.add('animate__animated', 'animate__fadeIn');
+            }, 500);
+        }
+    </script>
+</body>
+</html>
