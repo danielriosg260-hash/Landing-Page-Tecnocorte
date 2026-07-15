@@ -34,7 +34,7 @@
             --text-muted: #a0a0a0;
         }
 
-        /* 11. Cursor Personalizado Premium (Desactivado en celulares para no interferir) */
+        /* Cursor Personalizado Premium */
         @media (min-width: 992px) {
             #custom-cursor {
                 width: 20px;
@@ -66,7 +66,7 @@
             }
         }
 
-        /* 10. Partículas de Fondo */
+        /* Partículas de Fondo */
         #canvas-particles {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -115,7 +115,7 @@
             overflow-x: hidden;
         }
 
-        h1, h2, h3, .navbar-brand {
+        h1, h2, h3, h4, .navbar-brand {
             font-family: 'Cinzel', serif;
         }
 
@@ -139,11 +139,11 @@
         }
         .nav-link {
             color: var(--text-light) !important;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin: 0 10px;
+            margin: 0 8px;
             transition: 0.3s;
         }
         .nav-link:hover {
@@ -194,34 +194,35 @@
             border-color: transparent;
         }
 
-        /* Tarjetas de Roles */
-        .feature-card {
+        /* Tarjetas del Equipo (Sobre Nosotros) */
+        .team-card {
             background-color: var(--dark-card);
             border: 1px solid rgba(199, 158, 69, 0.1);
             border-radius: 12px;
-            padding: 40px 30px;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            position: relative;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.4s ease;
         }
-        .feature-card:hover {
+        .team-card:hover {
             border-color: var(--gold-solid);
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(199, 158, 69, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(199, 158, 69, 0.15);
         }
-        .feature-icon {
-            font-size: 3.5rem;
+        .team-avatar-placeholder {
+            width: 100px;
+            height: 100px;
             background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 25px;
-            display: inline-block;
-            transition: transform 0.6s ease;
-        }
-        .feature-card:hover .feature-icon {
-            transform: rotateY(180deg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2.5rem;
+            color: var(--dark-deep);
+            font-weight: bold;
         }
 
-        /* 1. Dashboard Interactivo */
+        /* Dashboard & App Simulator */
         .dashboard-mockup {
             background-color: #101010;
             border: 2px solid rgba(199, 158, 69, 0.25);
@@ -252,7 +253,33 @@
             transition: width 2s cubic-bezier(0.1, 1, 0.1, 1);
         }
 
-        /* 6. Tecnologías Girable 3D */
+        /* Servicios Premium */
+        .service-card {
+            background-color: var(--dark-card);
+            border: 1px solid rgba(199, 158, 69, 0.1);
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card:hover {
+            border-color: var(--gold-solid);
+            transform: translateY(-5px);
+        }
+        .service-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--gold-solid);
+            color: var(--dark-deep);
+            font-weight: bold;
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        /* Tarjetas de Tecnologías Girable 3D */
         .tech-card-wrapper {
             perspective: 1000px;
             height: 160px;
@@ -290,7 +317,7 @@
             text-align: center;
         }
 
-        /* 5. Arquitectura ADSO Interactiva */
+        /* Arquitectura ADSO Interactiva */
         .arch-node {
             background-color: var(--dark-card);
             border: 1px solid rgba(199, 158, 69, 0.2);
@@ -305,7 +332,7 @@
             transform: scale(1.05);
         }
 
-        /* 7. Tabla de Comparación */
+        /* Tabla de Comparación */
         .table-premium {
             width: 100%;
             border-collapse: separate;
@@ -333,7 +360,7 @@
             border-color: rgba(199, 158, 69, 0.2);
         }
 
-        /* 14. Roadmap */
+        /* Roadmap */
         .roadmap-item {
             position: relative;
             padding-left: 30px;
@@ -375,15 +402,32 @@
             border-color: var(--gold-solid);
             background-color: rgba(199, 158, 69, 0.05);
         }
+
+        /* Estilo para los botones de las vistas de la App interactiva */
+        .btn-tab-toggle {
+            background-color: #222;
+            color: #888;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 30px;
+            padding: 10px 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-tab-toggle.active {
+            background: var(--gold-gradient);
+            color: var(--dark-deep);
+            border-color: transparent;
+            box-shadow: 0 5px 15px rgba(199, 158, 69, 0.3);
+        }
     </style>
 </head>
 <body>
 
-    <!-- 11. Elementos visuales de Cursor (Solo Escritorio) -->
+    <!-- Elementos visuales de Cursor (Solo Escritorio) -->
     <div id="custom-cursor"></div>
     <div id="custom-cursor-dot"></div>
 
-    <!-- 10. Canvas para Partículas de Fondo -->
+    <!-- Canvas para Partículas de Fondo -->
     <canvas id="canvas-particles"></canvas>
 
     <!-- PRELOADER -->
@@ -405,11 +449,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link hover-target" href="#inicio">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link hover-target" href="#dashboard">SaaS</a></li>
+                    <li class="nav-item"><a class="nav-link hover-target" href="#sobre-nosotros">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link hover-target" href="#servicios">Servicios</a></li>
+                    <li class="nav-item"><a class="nav-link hover-target" href="#dashboard">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link hover-target" href="#app-mockup">La App</a></li>
                     <li class="nav-item"><a class="nav-link hover-target" href="#arquitectura">Arquitectura</a></li>
                     <li class="nav-item"><a class="nav-link hover-target" href="#tecnologias">Tecnologías</a></li>
-                    <li class="nav-item"><a class="nav-link hover-target" href="#simulador">Simulador</a></li>
-                    <li class="nav-item"><a class="nav-link hover-target" href="#comparativa">Comparativa</a></li>
+                    <li class="nav-item"><a class="nav-link hover-target" href="#simulador">Simular</a></li>
                     <li class="nav-item"><a class="nav-link hover-target" href="#roadmap">Roadmap</a></li>
                 </ul>
             </div>
@@ -437,8 +483,97 @@
         </div>
     </section>
 
-    <!-- 1. DASHBOARD INTERACTIVO MOCKUP (SaaS Feeling) -->
-    <section id="dashboard" class="py-5 my-5">
+    <!-- SOBRE NOSOTROS (Idea #13) -->
+    <section id="sobre-nosotros" class="py-5 my-5">
+        <div class="container py-5">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="badge bg-secondary mb-2">Nuestro Equipo</span>
+                <h2 class="display-5 fw-bold">Sobre <span class="gold-gradient-text">Nosotros</span></h2>
+                <p class="text-secondary mx-auto" style="max-width:600px;">Detrás de TecnoCorte hay un equipo comprometido con la innovación y el desarrollo de software de alta calidad para el sector de la barbería.</p>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-5" data-aos="fade-right">
+                    <div class="team-card">
+                        <div class="team-avatar-placeholder">D</div>
+                        <h4 class="fw-bold text-white mb-1">Daniel</h4>
+                        <p class="text-warning small mb-3">Product Owner & Lead Developer</p>
+                        <p class="text-secondary small mb-0">Encargado de la lógica de negocio, arquitectura del servidor en Node.js y la estructuración del flujo relacional de la base de datos.</p>
+                    </div>
+                </div>
+                <div class="col-md-5" data-aos="fade-left">
+                    <div class="team-card">
+                        <div class="team-avatar-placeholder">M</div>
+                        <h4 class="fw-bold text-white mb-1">Marlon</h4>
+                        <p class="text-warning small mb-3">Scrum Master & UI Designer</p>
+                        <p class="text-secondary small mb-0">Gestor del flujo ágil del proyecto, diseño de la experiencia de usuario (UX) e implementación de la interfaz visual moderna.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICIOS PREMIUM (Idea #12) -->
+    <section id="servicios" class="py-5" style="background-color: var(--dark-deep);">
+        <div class="container py-5">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="badge bg-secondary mb-2">Catálogo de Estilos</span>
+                <h2 class="display-5 fw-bold">Servicios <span class="gold-gradient-text">Premium</span></h2>
+                <p class="text-secondary">Experiencias completas diseñadas con precisión técnica.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card">
+                        <span class="service-badge">Popular</span>
+                        <i class="bi bi-scissors text-warning fs-1 mb-3 d-block"></i>
+                        <h4 class="fw-bold text-white mb-2">Corte Premium</h4>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="text-warning fw-bold fs-5">$35.000</span>
+                            <span class="text-secondary small"><i class="bi bi-clock me-1"></i> 40 min</span>
+                        </div>
+                        <p class="text-secondary small mb-4">Corte de precisión, lavado capilar y peinado con cera de alta fijación.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-warning small"><i class="bi bi-star-fill me-1"></i> 4.9</span>
+                            <a href="#simulador" class="btn btn-sm btn-outline-gold hover-target" onclick="autoSelectService('Corte Premium - $35k')">Reservar</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card">
+                        <i class="bi bi-brush text-warning fs-1 mb-3 d-block"></i>
+                        <h4 class="fw-bold text-white mb-2">Perfilado Barba</h4>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="text-warning fw-bold fs-5">$20.000</span>
+                            <span class="text-secondary small"><i class="bi bi-clock me-1"></i> 25 min</span>
+                        </div>
+                        <p class="text-secondary small mb-4">Diseño de línea con navaja, toalla caliente y aplicación de aceites hidratantes.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-warning small"><i class="bi bi-star-fill me-1"></i> 4.8</span>
+                            <a href="#simulador" class="btn btn-sm btn-outline-gold hover-target" onclick="autoSelectService('Corte Premium - $35k')">Reservar</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 d-md-none d-lg-block" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card">
+                        <span class="service-badge">VIP</span>
+                        <i class="bi bi-gem text-warning fs-1 mb-3 d-block"></i>
+                        <h4 class="fw-bold text-white mb-2">Combo Combo</h4>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="text-warning fw-bold fs-5">$50.000</span>
+                            <span class="text-secondary small"><i class="bi bi-clock me-1"></i> 60 min</span>
+                        </div>
+                        <p class="text-secondary small mb-4">Corte de cabello premium + Diseño completo de barba y exfoliación facial.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-warning small"><i class="bi bi-star-fill me-1"></i> 5.0</span>
+                            <a href="#simulador" class="btn btn-sm btn-outline-gold hover-target" onclick="autoSelectService('Corte & Barba - $50k')">Reservar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DASHBOARD INTERACTIVO MOCKUP (SaaS Feeling) -->
+    <section id="dashboard" class="py-5">
         <div class="container py-5">
             <div class="text-center mb-5" data-aos="fade-up">
                 <h2 class="display-5 fw-bold">Gestión Centralizada, <span class="gold-gradient-text">Control Absoluto</span></h2>
@@ -528,8 +663,97 @@
         </div>
     </section>
 
-    <!-- 5. ARQUITECTURA DE SOFTWARE (ADSO Impressive Section) -->
-    <section id="arquitectura" class="py-5" style="background-color: var(--dark-deep);">
+    <!-- FUNCIONALIDADES REALES INTERACTIVAS DE LA APP (Vistas Cliente / Barbero) -->
+    <section id="app-mockup" class="py-5" style="background-color: var(--dark-deep);">
+        <div class="container py-5">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="badge bg-secondary mb-2">Módulo Interactivo</span>
+                <h2 class="display-5 fw-bold">Dentro de la <span class="gold-gradient-text">Plataforma</span></h2>
+                <p class="text-secondary">Prueba cómo cambian las funciones según el rol del usuario conectado en el sistema.</p>
+                <div class="d-flex justify-content-center gap-3 mt-4">
+                    <button class="btn-tab-toggle active" id="btn-view-client" onclick="switchAppView('cliente')"><i class="bi bi-person-bounding-box me-2"></i>Vista Cliente</button>
+                    <button class="btn-tab-toggle" id="btn-view-barber" onclick="switchAppView('barbero')"><i class="bi bi-scissors me-2"></i>Vista Barbero</button>
+                </div>
+            </div>
+
+            <!-- Contenedor del Dispositivo Simulado -->
+            <div class="row justify-content-center" data-aos="zoom-in">
+                <div class="col-lg-6">
+                    <div class="dashboard-mockup" style="max-width:420px; margin: 0 auto; border-radius: 30px; border: 4px solid #333;">
+                        <div class="dash-header p-3 text-center" style="background-color: #111;">
+                            <span class="badge bg-dark text-warning px-3">TecnoCorte App</span>
+                        </div>
+                        <div class="p-4" style="background-color: #0c0c0c; min-height: 400px;">
+                            
+                            <!-- VISTA CLIENTE -->
+                            <div id="view-client-content">
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <div>
+                                        <h6 class="text-white mb-0">Hola, Carlos Restrepo</h6>
+                                        <span class="text-warning small" style="font-size:0.75rem;"><i class="bi bi-star-fill"></i> Cliente VIP Gold</span>
+                                    </div>
+                                    <div class="text-end">
+                                        <span class="small text-secondary d-block">Puntos</span>
+                                        <span class="fw-bold text-white">450 pts</span>
+                                    </div>
+                                </div>
+                                <div class="dash-card mb-3" style="background-color: #151515;">
+                                    <span class="small text-secondary d-block mb-1">Siguiente cita</span>
+                                    <h6 class="text-white mb-0">Mañana - 2:30 PM</h6>
+                                    <span class="text-warning small d-block mt-1">Con Mateo (Senior) • Corte Premium</span>
+                                </div>
+                                <div class="dash-card" style="background-color: #151515;">
+                                    <h6 class="small text-white mb-2"><i class="bi bi-clock-history text-warning me-2"></i>Mi Historial</h6>
+                                    <div class="d-flex justify-content-between small text-secondary py-1 border-bottom border-secondary-subtle">
+                                        <span>05 Jul - Corte & Barba</span>
+                                        <span class="text-success">Completado</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between small text-secondary py-1">
+                                        <span>20 Jun - Corte Premium</span>
+                                        <span class="text-success">Completado</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- VISTA BARBERO -->
+                            <div id="view-barber-content" class="d-none">
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <div>
+                                        <h6 class="text-white mb-0">Barbero: Mateo (Senior)</h6>
+                                        <span class="text-success small" style="font-size:0.75rem;"><i class="bi bi-circle-fill"></i> Disponible en turno</span>
+                                    </div>
+                                    <div class="text-end">
+                                        <span class="small text-secondary d-block">Servicios Hoy</span>
+                                        <span class="fw-bold text-white">8/12</span>
+                                    </div>
+                                </div>
+                                <div class="dash-card mb-3" style="background-color: #151515;">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span class="badge bg-warning text-dark">Cita en Progreso</span>
+                                        <span class="small text-secondary">2:30 PM</span>
+                                    </div>
+                                    <h6 class="text-white mb-1">Cliente: Carlos Restrepo</h6>
+                                    <p class="small text-secondary mb-3">Servicio solicitado: Corte Premium</p>
+                                    <button class="btn btn-sm btn-gold w-100 py-2 hover-target" onclick="alert('Acción del Barbero: Servicio marcado como Terminado. ¡Puntos acumulados al cliente!')">Finalizar Servicio</button>
+                                </div>
+                                <div class="dash-card" style="background-color: #151515;">
+                                    <h6 class="small text-white mb-2"><i class="bi bi-graph-up-arrow text-warning me-2"></i>Ganancias del Día</h6>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="text-secondary small">Comisión Acumulada</span>
+                                        <span class="text-success fw-bold">$140.000 COP</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ARQUITECTURA DE SOFTWARE (ADSO Impressive Section) -->
+    <section id="arquitectura" class="py-5">
         <div class="container py-5 text-center">
             <div class="mb-5" data-aos="fade-up">
                 <span class="badge bg-secondary mb-2">ADSO MVC</span>
@@ -569,8 +793,8 @@
         </div>
     </section>
 
-    <!-- 6. TECNOLOGÍAS CARD 3D (Idea #6) -->
-    <section id="tecnologias" class="py-5 my-5">
+    <!-- TECNOLOGÍAS CARD 3D (Idea #6) -->
+    <section id="tecnologias" class="py-5 my-5" style="background-color: var(--dark-deep);">
         <div class="container py-5">
             <div class="text-center mb-5" data-aos="fade-up">
                 <h2 class="display-5 fw-bold">El Stack <span class="gold-gradient-text">Tecnológico</span></h2>
@@ -643,7 +867,7 @@
     </section>
 
     <!-- WIDGET SIMULADOR INTERACTIVO -->
-    <section id="simulador" class="py-5" style="background-color: var(--dark-deep);">
+    <section id="simulador" class="py-5">
         <div class="container py-5">
             <div class="row align-items-center">
                 <div class="col-lg-5 mb-5 mb-lg-0" data-aos="fade-right">
@@ -656,16 +880,16 @@
                     <p class="text-secondary"><i class="bi bi-check2-all text-warning me-2"></i> Completamente responsive.</p>
                 </div>
                 <div class="col-lg-7" data-aos="fade-left">
-                    <div class="simulator-box text-white">
+                    <div class="simulator-box text-white" id="booking-simulation-box">
                         <h4 class="mb-4 text-center fw-bold"><i class="bi bi-calendar-check text-warning me-2"></i> Reserva Express</h4>
                         
                         <div id="booking-steps">
                             <!-- Paso 1 -->
                             <div class="mb-3">
                                 <label class="small text-secondary fw-bold">1. SELECCIONA EL SERVICIO</label>
-                                <div class="row g-2 mt-1">
-                                    <div class="col-6"><div class="simulator-step active" onclick="selectItem(this, 'servicio', 'Corte Premium - $35k')">Corte Premium</div></div>
-                                    <div class="col-6"><div class="simulator-step" onclick="selectItem(this, 'servicio', 'Corte & Barba - $50k')">Corte & Barba</div></div>
+                                <div class="row g-2 mt-1" id="simulator-services-row">
+                                    <div class="col-6"><div class="simulator-step active" id="sim-opt-corte" onclick="selectItem(this, 'servicio', 'Corte Premium - $35k')">Corte Premium</div></div>
+                                    <div class="col-6"><div class="simulator-step" id="sim-opt-combo" onclick="selectItem(this, 'servicio', 'Corte & Barba - $50k')">Corte & Barba</div></div>
                                 </div>
                             </div>
                             <!-- Paso 2 -->
@@ -707,55 +931,7 @@
         </div>
     </section>
 
-    <!-- 7. TABLA DE COMPARATIVO (WhatsApp vs TecnoCorte) -->
-    <section id="comparativa" class="py-5">
-        <div class="container py-5">
-            <div class="text-center mb-5" data-aos="fade-up">
-                <h2 class="display-5 fw-bold">¿Por qué <span class="gold-gradient-text">Digitalizar</span>?</h2>
-                <p class="text-secondary">Comparativa de control directo sobre los métodos de reserva tradicionales.</p>
-            </div>
-            
-            <div class="row justify-content-center" data-aos="zoom-in">
-                <div class="col-lg-10">
-                    <div class="table-responsive">
-                        <table class="table-premium">
-                            <thead>
-                                <tr>
-                                    <th>Característica</th>
-                                    <th>Chats de WhatsApp</th>
-                                    <th>TecnoCorte Platform</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="text-start fw-bold">Evitar Reservas Duplicadas</td>
-                                    <td class="text-danger"><i class="bi bi-x-circle-fill"></i> Ineficiente</td>
-                                    <td class="text-success"><i class="bi bi-check-circle-fill"></i> 100% Automatizado</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-start fw-bold">Historial de Visitas del Cliente</td>
-                                    <td class="text-danger"><i class="bi bi-x-circle-fill"></i> Manual / No hay</td>
-                                    <td class="text-success"><i class="bi bi-check-circle-fill"></i> Base de Datos SQL</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-start fw-bold">Control de Ingresos / Caja</td>
-                                    <td class="text-danger"><i class="bi bi-x-circle-fill"></i> No integrado</td>
-                                    <td class="text-success"><i class="bi bi-check-circle-fill"></i> Dashboard Admin</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-start fw-bold">Notificación Automática</td>
-                                    <td class="text-danger"><i class="bi bi-x-circle-fill"></i> Depende del humano</td>
-                                    <td class="text-success"><i class="bi bi-check-circle-fill"></i> Al instante</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 14. ROADMAP DE PROYECTO -->
+    <!-- ROADMAP DE PROYECTO -->
     <section id="roadmap" class="py-5" style="background-color: var(--dark-deep);">
         <div class="container py-5">
             <div class="text-center mb-5" data-aos="fade-up">
@@ -796,7 +972,7 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
     <script>
-        // 1. Quitar Preloader al cargar
+        // Quitar Preloader al cargar
         window.addEventListener('load', () => {
             const preloader = document.getElementById('preloader');
             preloader.style.opacity = '0';
@@ -809,7 +985,7 @@
             }, 500);
         });
 
-        // 11. Control de Movimiento del Cursor Personalizado (Solo Desktop)
+        // Control de Movimiento del Cursor Personalizado (Solo Desktop)
         const cursor = document.getElementById('custom-cursor');
         const cursorDot = document.getElementById('custom-cursor-dot');
         
@@ -822,7 +998,7 @@
             });
         }
 
-        // 10. Lógica del Sistema de Partículas de Luz de Fondo
+        // Lógica del Sistema de Partículas de Luz de Fondo
         const canvas = document.getElementById('canvas-particles');
         const ctx = canvas.getContext('2d');
         let particlesArray = [];
@@ -880,7 +1056,7 @@
         }
         animateParticles();
 
-        // 2. Control de la Barra de Progreso Superior
+        // Control de la Barra de Progreso Superior
         window.onscroll = function() {
             let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -888,14 +1064,34 @@
             document.getElementById("scrollBar").style.width = scrolled + "%";
         };
 
-        // 3. Inicializar Animaciones AOS
+        // Inicializar Animaciones AOS
         AOS.init({
             duration: 900,
             once: true,
             mirror: false
         });
 
-        // 5. Lógica Interactiva del Simulador de Reserva
+        // Alternar entre Vistas de la App (Cliente/Barbero)
+        function switchAppView(view) {
+            const btnClient = document.getElementById('btn-view-client');
+            const btnBarber = document.getElementById('btn-view-barber');
+            const clientContent = document.getElementById('view-client-content');
+            const barberContent = document.getElementById('view-barber-content');
+
+            if (view === 'cliente') {
+                btnClient.classList.add('active');
+                btnBarber.classList.remove('active');
+                clientContent.classList.remove('d-none');
+                barberContent.classList.add('d-none');
+            } else {
+                btnClient.classList.remove('active');
+                btnBarber.classList.add('active');
+                clientContent.classList.add('d-none');
+                barberContent.classList.remove('d-none');
+            }
+        }
+
+        // Lógica Interactiva del Simulador de Reserva
         let selectedData = {
             servicio: 'Corte Premium - $35k',
             barbero: 'Mateo (Senior)',
@@ -907,6 +1103,18 @@
             rowElements.forEach(el => el.classList.remove('active'));
             element.classList.add('active');
             selectedData[category] = value;
+        }
+
+        function autoSelectService(serviceName) {
+            selectedData.servicio = serviceName;
+            const corteStep = document.getElementById('sim-opt-corte');
+            const comboStep = document.getElementById('sim-opt-combo');
+
+            if (serviceName.includes('Corte Premium')) {
+                selectItem(corteStep, 'servicio', 'Corte Premium - $35k');
+            } else {
+                selectItem(comboStep, 'servicio', 'Corte & Barba - $50k');
+            }
         }
 
         function confirmBooking() {
